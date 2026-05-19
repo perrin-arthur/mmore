@@ -1,5 +1,6 @@
 import io
 import logging
+import os
 import re
 from dataclasses import dataclass, field
 from multiprocessing import Manager, Process, set_start_method
@@ -41,6 +42,8 @@ class PDFProcessor(Processor):
 
     @classmethod
     def accepts(cls, file: FileDescriptor) -> bool:
+        if os.environ.get("MMORE_PDF_BACKEND", "").lower() == "mistral":
+            return False
         return file.file_extension.lower() == ".pdf"
 
     @staticmethod

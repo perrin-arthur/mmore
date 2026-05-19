@@ -5,6 +5,9 @@ dispatcher_config:
   distributed: false
   extract_images: true
   scheduler_file: $ROOT_OUT_DIR/scheduler-file.json #put absolute path!
+  # PDF backend: "marker" (default, local GPU via Marker/Surya) or "mistral"
+  # (hosted Mistral OCR API, requires MISTRAL_API_KEY env var).
+  pdf_backend: marker
   process_batch_sizes:
     - URLProcessor: 40
     - DOCXProcessor: 100
@@ -23,6 +26,9 @@ dispatcher_config:
       - type: "automatic-speech-recognition"
       - sample_rate: 10
       - batch_size: 4
+
+    MistralOCRProcessor:
+      - mistral_ocr_model: "mistral-ocr-latest"
 
     PDFProcessor:
       - PDFTEXT_CPU_WORKERS: 0

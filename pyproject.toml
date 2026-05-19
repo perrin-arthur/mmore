@@ -54,6 +54,7 @@ process = [
     "PyMuPDF",
     "marker-pdf>=1.6",
     "surya-ocr>=0.8.3",
+    "mistralai>=2.4",  # enables MistralOCRProcessor (hosted OCR backend)
     "moviepy>=2.0",
     "mammoth>=1.8",
     "markdownify>=0.12",
